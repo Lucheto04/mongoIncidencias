@@ -1,0 +1,114 @@
+use("db_mongo_incidencias");
+db.createCollection("counters");
+db.counters.insertMany([
+    { _id: "trainerId", sequence_value: 0 },
+    { _id: "incidenciaId", sequence_value: 0 }
+]);
+
+use("db_mongo_incidencias");
+db.createCollection("trainer", {
+    capped: true,
+    size: 5000,
+    max: 15,
+    validator: {
+        $jsonSchema: {
+            bsonType: 'object',
+            additionalProperties: false,
+            required: ['_id', 'nombre', 'email_personal', 'telefono_movil'],
+            properties: {
+                _id: {
+                    bsonType: "int"
+                },
+                nombre: {
+                    bsonType: 'string',
+                    description: `El parametro nombre es obligatorio y debe ser un string.`
+                },
+                email_personal: {
+                    bsonType: 'string',
+                    description: `El parametro email_personal es obligatorio y debe ser un string.`
+                },
+                email_corporativo: {
+                    bsonType: 'string',
+                    description: `El parametro email_corporativo es obligatorio y debe ser un string.`
+                },
+                telefono_movil: {
+                    bsonType: 'string',
+                    description: `El parametro telefono_movil es obligatorio y debe ser un string.`
+                },
+                telefono_residencia: {
+                    bsonType: 'string',
+                    description: `El parametro telefono_residencia es obligatorio y debe ser un string.`
+                },
+                telefono_empresa: {
+                    bsonType: 'string',
+                    description: `El parametro telefono_empresa es obligatorio y debe ser un string.`
+                },
+                telefono_movil_empresarial: {
+                    bsonType: 'string',
+                    description: `El parametro telefono_movil_empresarial es obligatorio y debe ser un string.`
+                }
+            }
+        }
+    }
+});
+
+use("db_mongo_incidencias");
+db.createCollection("incidencia", {
+    capped: true,
+    size: 5000,
+    max: 15,
+    validator: {
+        $jsonSchema: {
+            bsonType: 'object',
+            additionalProperties: false,
+            required: ['_id', 'trainerId' , 'categoria', 'tipo_incidencia', 'fecha_reporte', 'area_incidencia', 'equipo_averiado', 'codigo_equipo', 'descripcion'],
+            properties: {
+                _id: {
+                    bsonType: "int"
+                },
+                trainerId: {
+                    bsonType: 'int',
+                    description: `El parametro trainerId es obligatorio y debe ser un int`
+                },
+                categoria: {
+                    bsonType: 'string',
+                    description: `El parametro categoria es obligatorio y debe ser un string.`,
+                    enum: ["hardware", "software"]
+                },
+                tipo_incidencia: {
+                    bsonType: 'string',
+                    description: `El parametro tipo_incidencia es obligatorio y debe ser un string.`,
+                    enum: ["leve", "moderada", "critica"]
+                },
+                fecha_reporte: {
+                    bsonType: 'date',
+                    description: `El parametro fecha_reporte es obligatorio y debe ser un string en formato YYYY-MM-DD.`
+                },
+                area_incidencia: {
+                    bsonType: 'string',
+                    description: `El parametro area_incidencia es obligatorio y debe ser un string.`,
+                    enum: ["Apolo", "Artemis", "Sputnik", "Skylab", "Corvus", "Endor"]
+                },
+                equipo_averiado: {
+                    bsonType: 'string',
+                    description: `El parametro equipo_averiado es obligatorio y debe ser un string.`,
+                    enum: ["pantalla", "mouse", "diadema", "teclado", "torre"]
+                },
+                color_equipo: {
+                    bsonType: 'string',
+                    description: `El parametro color_equipo debe ser un string.`
+                },
+                codigo_equipo: {
+                    bsonType: 'string',
+                    description: `El parametro codigo_equipo es obligatorio y debe ser un string.`
+                },
+                descripcion: {
+                    bsonType: 'string',
+                    description: `El parametro descripcion es obligatorio y debe ser un string.`
+                }
+            }
+        }
+    }
+});
+
+

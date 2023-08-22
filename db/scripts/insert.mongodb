@@ -1,0 +1,93 @@
+function siguienteId(coleccion) {
+    const sequenceDocument = db.counters.findOneAndUpdate(
+        { _id: `${coleccion}Id` },
+        { $inc: { sequence_value: 1 } },
+        { returnDocument: "after" }
+    );
+    return sequenceDocument.sequence_value;
+}
+
+use("db_mongo_incidencias");
+db.trainer.insertMany([
+    {
+        _id: Number(siguienteId("trainer")),
+        nombre: "Miguel Castro",
+        email_personal: "MiguelCas@gmail.com",
+        email_corporativo: "MiguelCampus@outlook.com",
+        telefono_movil: "+57 321 548 6549"
+    },
+    {
+        _id: Number(siguienteId("trainer")),
+        nombre: "Carlos Rueda",
+        email_personal: "CarlosRue@gmail.com",
+        email_corporativo: "CarlosCampus@outlook.com",
+        telefono_movil: "+57 311 485 6945"
+    },
+    {
+        _id: Number(siguienteId("trainer")),
+        nombre: "Vermen",
+        email_personal: "Vermen@gmail.com",
+        email_corporativo: "VermenCampus@outlook.com",
+        telefono_movil: "+57 389 455 4545"
+    },
+    {
+        _id: Number(siguienteId("trainer")),
+        nombre: "Johlver",
+        email_personal: "Johlver@gmail.com",
+        email_corporativo: "JohlverCampus@outlook.com",
+        telefono_movil: "+57 365 275 4585"
+    }
+]);
+
+use("db_mongo_incidencias");
+db.incidencia.insertMany([
+    {
+        _id: Number(siguienteId("incidencia")),
+        trainerId: 1,
+        categoria: "hardware",
+        tipo_incidencia: "moderada",
+        fecha_reporte: ISODate('2022-06-03'),
+        area_incidencia: "Artemis",
+        equipo_averiado: "pantalla",
+        color_equipo: "negro",
+        codigo_equipo: "Ads65752",
+        descripcion: "Aparecen lineas moradas en la pantalla"
+    },
+    {
+        _id: Number(siguienteId("incidencia")),
+        trainerId: 3,
+        categoria: "software",
+        tipo_incidencia: "leve",
+        fecha_reporte: ISODate('2022-02-03'),
+        area_incidencia: "Sputnik",
+        equipo_averiado: "torre",
+        color_equipo: "blanco",
+        codigo_equipo: "qwas4789",
+        descripcion: "Se sobre calienta la ram, hace que cargue lento"
+    },
+    {
+        _id: Number(siguienteId("incidencia")),
+        trainerId: 3,
+        categoria: "hardware",
+        tipo_incidencia: "critica",
+        fecha_reporte: ISODate('2022-08-03'),
+        area_incidencia: "Apolo",
+        equipo_averiado: "torre",
+        color_equipo: "negro",
+        codigo_equipo: "687sdfsd",
+        descripcion: "Se quemo la tarjeta grafica"
+    },
+    {
+        _id: Number(siguienteId("incidencia")),
+        trainerId: 4,
+        categoria: "hardware",
+        tipo_incidencia: "leve",
+        fecha_reporte: ISODate('2022-04-03'),
+        area_incidencia: "Corvus",
+        equipo_averiado: "teclado",
+        color_equipo: "negro",
+        codigo_equipo: "23465423fdsaf",
+        descripcion: "Se perdio la tecla 'M'"
+    }
+]);
+
