@@ -1,6 +1,6 @@
 function siguienteId(coleccion) {
     const sequenceDocument = db.counters.findOneAndUpdate(
-        { _id: `${coleccion}Id` },
+        { counter: `${coleccion}Id` },
         { $inc: { sequence_value: 1 } },
         { returnDocument: "after" }
     );
@@ -10,28 +10,28 @@ function siguienteId(coleccion) {
 use("db_mongo_incidencias");
 db.trainer.insertMany([
     {
-        _id: Number(siguienteId("trainer")),
+        id_trainer: Number(siguienteId("trainer")),
         nombre: "Miguel Castro",
         email_personal: "MiguelCas@gmail.com",
         email_corporativo: "MiguelCampus@outlook.com",
         telefono_movil: "+57 321 548 6549"
     },
     {
-        _id: Number(siguienteId("trainer")),
+        id_trainer: Number(siguienteId("trainer")),
         nombre: "Carlos Rueda",
         email_personal: "CarlosRue@gmail.com",
         email_corporativo: "CarlosCampus@outlook.com",
         telefono_movil: "+57 311 485 6945"
     },
     {
-        _id: Number(siguienteId("trainer")),
+        id_trainer: Number(siguienteId("trainer")),
         nombre: "Vermen",
         email_personal: "Vermen@gmail.com",
         email_corporativo: "VermenCampus@outlook.com",
         telefono_movil: "+57 389 455 4545"
     },
     {
-        _id: Number(siguienteId("trainer")),
+        id_trainer: Number(siguienteId("trainer")),
         nombre: "Johlver",
         email_personal: "Johlver@gmail.com",
         email_corporativo: "JohlverCampus@outlook.com",
@@ -42,7 +42,7 @@ db.trainer.insertMany([
 use("db_mongo_incidencias");
 db.incidencia.insertMany([
     {
-        _id: Number(siguienteId("incidencia")),
+        id_incidencia: Number(siguienteId("incidencia")),
         trainerId: 1,
         categoria: "hardware",
         tipo_incidencia: "moderada",
@@ -54,7 +54,7 @@ db.incidencia.insertMany([
         descripcion: "Aparecen lineas moradas en la pantalla"
     },
     {
-        _id: Number(siguienteId("incidencia")),
+        id_incidencia: Number(siguienteId("incidencia")),
         trainerId: 3,
         categoria: "software",
         tipo_incidencia: "leve",
@@ -66,7 +66,7 @@ db.incidencia.insertMany([
         descripcion: "Se sobre calienta la ram, hace que cargue lento"
     },
     {
-        _id: Number(siguienteId("incidencia")),
+        id_incidencia: Number(siguienteId("incidencia")),
         trainerId: 3,
         categoria: "hardware",
         tipo_incidencia: "critica",
@@ -78,7 +78,7 @@ db.incidencia.insertMany([
         descripcion: "Se quemo la tarjeta grafica"
     },
     {
-        _id: Number(siguienteId("incidencia")),
+        id_incidencia: Number(siguienteId("incidencia")),
         trainerId: 4,
         categoria: "hardware",
         tipo_incidencia: "leve",

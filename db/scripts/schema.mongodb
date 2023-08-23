@@ -1,8 +1,8 @@
 use("db_mongo_incidencias");
 db.createCollection("counters");
 db.counters.insertMany([
-    { _id: "trainerId", sequence_value: 0 },
-    { _id: "incidenciaId", sequence_value: 0 }
+    { counter: "trainerId", sequence_value: 0 },
+    { counter: "incidenciaId", sequence_value: 0 }
 ]);
 
 use("db_mongo_incidencias");
@@ -14,10 +14,13 @@ db.createCollection("trainer", {
         $jsonSchema: {
             bsonType: 'object',
             additionalProperties: false,
-            required: ['_id', 'nombre', 'email_personal', 'telefono_movil'],
+            required: ['_id', 'id_trainer','nombre', 'email_personal', 'telefono_movil'],
             properties: {
                 _id: {
-                    bsonType: "int"
+                    bsonType: 'objectId'
+                },
+                id_trainer: {
+                    bsonType: 'int'
                 },
                 nombre: {
                     bsonType: 'string',
@@ -61,10 +64,13 @@ db.createCollection("incidencia", {
         $jsonSchema: {
             bsonType: 'object',
             additionalProperties: false,
-            required: ['_id', 'trainerId' , 'categoria', 'tipo_incidencia', 'fecha_reporte', 'area_incidencia', 'equipo_averiado', 'codigo_equipo', 'descripcion'],
+            required: ['_id', 'id_incidencia', 'trainerId' , 'categoria', 'tipo_incidencia', 'fecha_reporte', 'area_incidencia', 'equipo_averiado', 'codigo_equipo', 'descripcion'],
             properties: {
                 _id: {
-                    bsonType: "int"
+                    bsonType: 'objectId'
+                },
+                id_incidencia: {
+                    bsonType: 'int'
                 },
                 trainerId: {
                     bsonType: 'int',
