@@ -1,5 +1,5 @@
 import { collectionGen } from "../db/atlas.js";
-
+import siguienteId from '../helpers/siguienteId.js'
 class Trainer {
     _id;
     id_trainer;
@@ -42,6 +42,20 @@ class Trainer {
             return result;
         } catch (error) {
             throw error;
+        }
+    }
+    async postTrainer(data){
+        try {
+            const connection = await this.connect();
+            const newIdProducto = await siguienteId("trainer");
+            const newDocumentProducto = {
+                id_trainer: newIdProducto,
+                ...data
+            };
+            const result = connection.insertOne(newDocumentProducto);
+            return result
+        } catch (error) {
+            throw error
         }
     }
 }
