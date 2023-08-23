@@ -1,10 +1,10 @@
 import { Router } from "express";
-import * as gets from '../controllers/getController.js';
+import * as getController from '../controllers/getController.js';
 
 const getInitRoute = () => {
     const appRouter = Router();
-    appRouter.get('/trainers', gets.getAllTrainersController);
-    appRouter.get('trainer', gets.getTrainerByIdController);
+    appRouter.get('/trainers', getController.getAllTrainersController);
+    appRouter.get('/trainer', getController.getTrainerByIdController);
 
     return appRouter;
 }
