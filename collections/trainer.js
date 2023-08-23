@@ -58,6 +58,18 @@ class Trainer {
             throw error
         }
     }
+    async putTrainer(id, data){
+        try {
+            const connection = await this.connect();
+            const result = await connection.updateOne(
+                { id_trainer: parseInt(id) },
+                { $set: data }
+            );
+            return result;
+        } catch (error) {
+            throw error
+        }
+    }
 }
 
 export {Trainer};
