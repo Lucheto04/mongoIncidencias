@@ -47,12 +47,12 @@ export class Trainer {
     async postTrainer(data){
         try {
             const connection = await this.connect();
-            const newIdProducto = await siguienteId("trainer");
-            const newDocumentProducto = {
-                id_trainer: newIdProducto,
+            const newId = await siguienteId("trainer");
+            const newDocument = {
+                id_trainer: newId,
                 ...data
             };
-            const result = connection.insertOne(newDocumentProducto);
+            const result = connection.insertOne(newDocument);
             return result
         } catch (error) {
             throw error
