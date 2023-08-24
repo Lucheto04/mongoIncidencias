@@ -6,7 +6,6 @@ export const tokenGeneretor = async (req, res) =>{
     try {
         const {id} = req.params
         const id_numero = parseInt(id)
-        console.log(id_numero);
         const connection = await collectionGen('trainer');
         const trainer = await connection.find(
             {
@@ -15,8 +14,9 @@ export const tokenGeneretor = async (req, res) =>{
         ).toArray()
         if (!trainer) res.status(404).send("usuario no existente");
         const {_id} = trainer[0];
+        const id_string = _id.toString()
         const encoder = new TextEncoder();
-        const jwtconstructor = new SignJWT({_id});
+        const jwtconstructor = new SignJWT({id: id_string});
         const jwt = await jwtconstructor
         .setProtectedHeader({alg:"HS256", typ: "JWT"})
         .setIssuedAt()
@@ -24,6 +24,7 @@ export const tokenGeneretor = async (req, res) =>{
         .sign(encoder.encode(process.env.JWT_PRIVATE_KEY));
         res.status(201).send({status: 201, message: jwt});
     } catch (error) {
+        console.log(error);
         res.status(404).send({status: 404, message: 'Token solicitado no existente'})
     }   
 }
