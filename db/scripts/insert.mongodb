@@ -14,58 +14,35 @@ db.trainer.insertMany([
         nombre: "Miguel Castro",
         email_personal: "MiguelCas@gmail.com",
         email_corporativo: "MiguelCampus@outlook.com",
-        telefono_movil: "+57 321 548 6549"
+        telefono_movil: "+57 321 548 6549",
+        rol: "Trainer"
     },
     {
         id_trainer: Number(siguienteId("trainer")),
         nombre: "Carlos Rueda",
         email_personal: "CarlosRue@gmail.com",
         email_corporativo: "CarlosCampus@outlook.com",
-        telefono_movil: "+57 311 485 6945"
+        telefono_movil: "+57 311 485 6945",
+        rol: "Trainer"
     },
     {
         id_trainer: Number(siguienteId("trainer")),
         nombre: "Vermen",
         email_personal: "Vermen@gmail.com",
         email_corporativo: "VermenCampus@outlook.com",
-        telefono_movil: "+57 389 455 4545"
+        telefono_movil: "+57 389 455 4545",
+        rol: "Trainer"
     },
     {
         id_trainer: Number(siguienteId("trainer")),
         nombre: "Johlver",
         email_personal: "Johlver@gmail.com",
         email_corporativo: "JohlverCampus@outlook.com",
-        telefono_movil: "+57 365 275 4585"
+        telefono_movil: "+57 365 275 4585",
+        rol: "Jefe de trainers"
     }
 ]);
 
-use("db_mongo_incidencias");
-db.camper.insertMany([
-    {
-        id_camper: Number(siguienteId("camper")),
-        nombre: "David Rueda",
-        email_personal: "David@gmail.com",
-        telefono_movil: "+57 321 654 6549"
-    },
-    {
-        id_camper: Number(siguienteId("camper")),
-        nombre: "Lucheto Tu Papa",
-        email_personal: "Lucheto@gmail.com",
-        telefono_movil: "+57 311 485 3214"
-    },
-    {
-        id_camper: Number(siguienteId("camper")),
-        nombre: "Diego Manga",
-        email_personal: "Diego@gmail.com",
-        telefono_movil: "+57 987 455 4545"
-    },
-    {
-        id_camper: Number(siguienteId("camper")),
-        nombre: "Ivan Terrible",
-        email_personal: "Ivan@gmail.com",
-        telefono_movil: "+57 365 275 6547"
-    }
-]);
 use("db_mongo_incidencias");
 db.incidencia.insertMany([
     {
