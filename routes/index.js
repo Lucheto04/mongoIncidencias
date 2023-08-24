@@ -5,7 +5,7 @@ import putInitRouter from "./putRoute.js";
 import deleteInitRoute from "./deleteRouter.js";
 import { limitPets, limitSize } from "../helpers/limit.js";
 import { tokenGeneretor, tokenVerify } from "../middleware/token.js";
-import { deleteMiddleware } from "../middleware/delete.middle.js";
+import { deleteMiddleware } from "../middleware/deleteIncidencia.middle.js";
 const initApiRoute = () => {
     const apiRouter = Router();
     apiRouter.use('/token/:id', limitPets, tokenGeneretor)
