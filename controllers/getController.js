@@ -21,7 +21,17 @@ export const getTrainerByIdController = async (req, res) => {
 
 export const getAllIncidenciasController = async (req, res) => {
     try {
-        const result = await getService.getAllIncidencias();
+        const result = await getService.getAllIncidenciaservice();
+        res.status(200).send(result);
+    } catch (error) {
+        res.status(500).send(error);
+    }
+}
+
+export const getIncidenciaByidController = async (req, res) => {
+    try {
+        const {id} = req.query;
+        const result = await getService.getIncidenciaByIdervice(parseInt(id));
         res.status(200).send(result);
     } catch (error) {
         res.status(500).send(error);

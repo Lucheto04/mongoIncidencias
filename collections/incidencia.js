@@ -30,4 +30,20 @@ export class Incidencia {
             throw error
         }
     }
+    async getIncidenciaById(id) {
+        try {
+            const connection = await this.connect();
+            const result = connection.find(
+                {
+                    id_incidencia: id
+                },
+                {
+                    _id: 0
+                }
+            ).toArray();
+            return result
+        } catch (error) {
+            throw error
+        }
+    }
 }

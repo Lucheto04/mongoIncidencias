@@ -6,6 +6,7 @@ const getInitRoute = () => {
     appRouter.get('/trainers', getController.getAllTrainersController);
     appRouter.get('/trainer', getController.getTrainerByIdController);
     appRouter.get('/incidencias', getController.getAllIncidenciasController);
+    appRouter.get('/incidencia', getController.getIncidenciaByidController);
     return appRouter;
 }
 

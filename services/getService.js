@@ -10,7 +10,12 @@ export const getTrainerByIdService = async (id) => {
     return await getTrainers.getTrainerById(id);
 }
 
-export const getAllIncidencias = async () => {
+export const getAllIncidenciaservice = async () => {
     const getIncidencias = new Incidencia;
     return await getIncidencias.getAllIncidencias();
+}
+
+export const getIncidenciaByIdervice = async (id) => {
+    const getIncidencias = new Incidencia;
+    return await getIncidencias.getIncidenciaById(id);
 }
