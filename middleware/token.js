@@ -6,6 +6,7 @@ export const tokenGeneretor = async (req, res) =>{
     try {
         const {id} = req.params
         const id_numero = parseInt(id)
+        console.log(id_numero);
         const connection = await collectionGen('trainer');
         const trainer = await connection.find(
             {
@@ -13,9 +14,9 @@ export const tokenGeneretor = async (req, res) =>{
             }
         ).toArray()
         if (!trainer) res.status(404).send("usuario no existente");
-        const {id_trainer} = trainer[0];
+        const {_id} = trainer[0];
         const encoder = new TextEncoder();
-        const jwtconstructor = new SignJWT({id_trainer});
+        const jwtconstructor = new SignJWT({_id});
         const jwt = await jwtconstructor
         .setProtectedHeader({alg:"HS256", typ: "JWT"})
         .setIssuedAt()

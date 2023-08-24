@@ -11,8 +11,8 @@ export const deleteMiddleware = async (req, res, next) => {
                     id_trainer: 1
                 }
             ).toArray()
-        const {id_trainer} = trainer[0];
-        let verify = id_trainer === JSON.stringify(payload);
+        const {_id} = trainer[0];
+        let verify = _id === JSON.stringify(payload);
         next();
     } catch (error) {
         res.status(401).send("Solo el trainer Miguel puede eliminar incidencias y trainers.");
