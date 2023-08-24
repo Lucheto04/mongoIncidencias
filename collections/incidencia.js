@@ -73,4 +73,15 @@ export class Incidencia {
             throw error
         }
     }
+    async deleteIncidencia(id) {
+        try {
+            const connection = await this.connect();
+            const result = await connection.deleteOne(
+                { id_incidencia: parseInt(id)}
+            )
+            return result;
+        } catch (error) {
+            throw error;            
+        }
+    }
 }

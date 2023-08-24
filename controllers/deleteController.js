@@ -9,3 +9,13 @@ export const deleteTrainerController = async (req, res) => {
         res.status(500).send(error);
     }
 }
+
+export const deleteIncidenciaController = async (req, res) => {
+    try {
+        const {id} = req.query;
+        const result = await deleteService.deleteIncidenciaService(id);
+        res.status(200).send(result);
+    } catch (error) {
+        res.status(500).send(error);
+    }
+}

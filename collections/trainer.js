@@ -77,10 +77,8 @@ export class Trainer {
                 { id_trainer: parseInt(id)}
             )
             return result;
-
         } catch (error) {
-            throw error
-            
+            throw error;
         }
     }
 }
