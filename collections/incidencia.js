@@ -46,4 +46,19 @@ export class Incidencia {
             throw error
         }
     }
+    async postIncidencia(data, fecha) {
+        try {
+            const connection = await this.connect();
+            const newIdProducto = await siguienteId("incidencia");
+            const newDocumentProducto = {
+                id_incidencia: newIdProducto,
+                fecha_reporte: fecha, 
+                ...data
+            };
+            const result = connection.insertOne(newDocumentProducto);
+            return result
+        } catch (error) {
+            throw error
+        }
+    }
 }
