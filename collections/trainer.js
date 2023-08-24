@@ -70,6 +70,19 @@ class Trainer {
             throw error
         }
     }
+    async deleteTrainer(id){
+        try {
+            const connection = await this.connect();
+            const result = await connection.deleteOne(
+                { id_trainer: parseInt(id)}
+            )
+            return result;
+
+        } catch (error) {
+            throw error
+            
+        }
+    }
 }
 
 export {Trainer};
