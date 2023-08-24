@@ -61,4 +61,16 @@ export class Incidencia {
             throw error
         }
     }
+    async putIncidencia(id, data) {
+        try {
+            const connection = await this.connect();
+            const result = await connection.updateOne(
+                { id_incidencia: parseInt(id) },
+                { $set: data }
+            );
+            return result;
+        } catch (error) {
+            throw error
+        }
+    }
 }
