@@ -2,7 +2,8 @@ use("db_mongo_incidencias");
 db.createCollection("counters");
 db.counters.insertMany([
     { counter: "trainerId", sequence_value: 0 },
-    { counter: "incidenciaId", sequence_value: 0 }
+    { counter: "incidenciaId", sequence_value: 0 },
+    { counter: "camperId", sequence_value: 0 }
 ]);
 
 use("db_mongo_incidencias");
@@ -49,6 +50,48 @@ db.createCollection("trainer", {
                 telefono_movil_empresarial: {
                     bsonType: 'string',
                     description: `El parametro telefono_movil_empresarial es obligatorio y debe ser un string.`
+                }
+            }
+        }
+    }
+});
+
+use("db_mongo_incidencias");
+db.createCollection("camper", {
+    capped: true,
+    size: 5000,
+    max: 15,
+    validator: {
+        $jsonSchema: {
+            bsonType: 'object',
+            additionalProperties: false,
+            required: ['_id', 'id_camper','nombre', 'email_personal', 'telefono_movil'],
+            properties: {
+                _id: {
+                    bsonType: 'objectId'
+                },
+                id_camper: {
+                    bsonType: 'int'
+                },
+                nombre: {
+                    bsonType: 'string',
+                    description: `El parametro nombre es obligatorio y debe ser un string.`
+                },
+                email_personal: {
+                    bsonType: 'string',
+                    description: `El parametro email_personal es obligatorio y debe ser un string.`
+                },
+                telefono_movil: {
+                    bsonType: 'string',
+                    description: `El parametro telefono_movil es obligatorio y debe ser un string.`
+                },
+                telefono_residencia: {
+                    bsonType: 'string',
+                    description: `El parametro telefono_residencia es obligatorio y debe ser un string.`
+                },
+                cuenta_bancaria: {
+                    bsonType: 'int',
+                    description: `El parametro cuenta_bancaria debe ser un numero entero (int).`
                 }
             }
         }

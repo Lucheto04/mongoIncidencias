@@ -40,6 +40,33 @@ db.trainer.insertMany([
 ]);
 
 use("db_mongo_incidencias");
+db.camper.insertMany([
+    {
+        id_camper: Number(siguienteId("camper")),
+        nombre: "David Rueda",
+        email_personal: "David@gmail.com",
+        telefono_movil: "+57 321 654 6549"
+    },
+    {
+        id_camper: Number(siguienteId("camper")),
+        nombre: "Lucheto Tu Papa",
+        email_personal: "Lucheto@gmail.com",
+        telefono_movil: "+57 311 485 3214"
+    },
+    {
+        id_camper: Number(siguienteId("camper")),
+        nombre: "Diego Manga",
+        email_personal: "Diego@gmail.com",
+        telefono_movil: "+57 987 455 4545"
+    },
+    {
+        id_camper: Number(siguienteId("camper")),
+        nombre: "Ivan Terrible",
+        email_personal: "Ivan@gmail.com",
+        telefono_movil: "+57 365 275 6547"
+    }
+]);
+use("db_mongo_incidencias");
 db.incidencia.insertMany([
     {
         id_incidencia: Number(siguienteId("incidencia")),
