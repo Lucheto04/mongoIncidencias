@@ -1,6 +1,5 @@
 import { collectionGen } from "../db/atlas.js";
 
-
 export const deleteMiddleware = async (req, res, next) => {
     try {
         let {payload} = req.data;
@@ -16,7 +15,6 @@ export const deleteMiddleware = async (req, res, next) => {
         let verify = id_trainer === JSON.stringify(payload);
         next();
     } catch (error) {
-        console.log(error);
         res.status(401).send("Solo el trainer Miguel puede eliminar incidencias y trainers.");
     }
 }

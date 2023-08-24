@@ -23,7 +23,6 @@ export const tokenGeneretor = async (req, res) =>{
         .sign(encoder.encode(process.env.JWT_PRIVATE_KEY));
         res.status(201).send({status: 201, message: jwt});
     } catch (error) {
-        console.log(error);
         res.status(404).send({status: 404, message: 'Token solicitado no existente'})
     }   
 }
@@ -38,7 +37,6 @@ export const tokenVerify = async (req, res, next) => {
             encoder.encode(process.env.JWT_PRIVATE_KEY)
         );
         req.data = jwtData;
-        console.log(jwtData);
         next();
     } catch (error) {
         res.status(498).send({status: 498, token: "Token caducado"});
