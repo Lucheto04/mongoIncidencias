@@ -18,3 +18,12 @@ export const getTrainerByIdController = async (req, res) => {
         res.status(500).send(error);
     }
 }
+
+export const getAllIncidenciasController = async (req, res) => {
+    try {
+        const result = await getService.getAllIncidencias();
+        res.status(200).send(result);
+    } catch (error) {
+        res.status(500).send(error);
+    }
+}

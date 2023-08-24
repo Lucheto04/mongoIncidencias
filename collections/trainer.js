@@ -1,6 +1,6 @@
 import { collectionGen } from "../db/atlas.js";
 import siguienteId from '../helpers/siguienteId.js'
-class Trainer {
+export class Trainer {
     _id;
     id_trainer;
     nombre;
@@ -84,5 +84,3 @@ class Trainer {
         }
     }
 }
-
-export {Trainer};
