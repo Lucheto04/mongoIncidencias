@@ -3,8 +3,8 @@ import * as putController from '../controllers/putController.js';
 
 const putInitRouter = () =>{
     const appRouter = Router();
-    appRouter.put('/trainer', putController.putTrainerController);
-    appRouter.put('/incidencia', putController.putIncidenciaController);
+    appRouter.put('/trainers', putController.putTrainerController);
+    appRouter.put('/incidencias', putController.putIncidenciaController);
     return appRouter;
 }
 
