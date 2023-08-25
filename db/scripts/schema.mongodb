@@ -33,15 +33,13 @@ db.createCollection("trainer", {
                 permisos: { 
                     bsonType: 'object',
                     description: "Ingrese los permisos",
-                    properties: {
-                        "/trainers": {
-                            bsonType: "array",
-                            items: {
-                                bsonType: "string",
-                                description: "Ingrese la version autorizada",
-                            }
-                        },
-
+                    required: ["/incidencias"],
+                    additionalProperties: {
+                        bsonType: "array",
+                        items: {
+                            bsonType: "string",
+                            description: "Ingrese la version autorizada",
+                        } 
                     }
                 },
                 email_personal: {

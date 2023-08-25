@@ -17,7 +17,7 @@ db.trainer.insertMany([
         telefono_movil: "+57 321 548 6549",
         rol: "Trainer",
         permisos:{
-            "/api": ["1.0.0", "3.5.0"]
+            "/incidencias": ["1.0.0", "3.5.0"]
         }
     },
     {
@@ -28,7 +28,7 @@ db.trainer.insertMany([
         telefono_movil: "+57 311 485 6945",
         rol: "Trainer",
         permisos:{
-            "/api": ["1.0.0", "3.5.0"]
+            "/incidencias": ["1.0.0", "3.5.0"]
         }
     },
     {
@@ -39,7 +39,7 @@ db.trainer.insertMany([
         telefono_movil: "+57 389 455 4545",
         rol: "Trainer",
         permisos:{
-            "/api": ["1.0.0", "3.5.0"]
+            "/incidencias": ["1.0.0", "3.5.0"]
         }
     },
     {
@@ -50,6 +50,7 @@ db.trainer.insertMany([
         telefono_movil: "+57 365 275 4585",
         rol: "Jefe de trainers",
         permisos:{
+            "/incidencias": ["1.0.0", "3.5.0"],
             "/trainers": ["1.0.0", "3.5.0"]
         },
     }
