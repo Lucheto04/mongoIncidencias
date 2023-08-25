@@ -5,7 +5,7 @@ dotenv.config();
 
 const app = express();
 app.use(express.json());
-app.use('/api', initApiRoute())
+app.use('/api', initApiRoute());
 
 
 const config = JSON.parse(process.env.MY_SERVER);

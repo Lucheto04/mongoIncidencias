@@ -7,7 +7,7 @@ import { limitPets, limitSize } from "../helpers/limit.js";
 import { tokenGeneretor, tokenVerify } from "../middleware/token.js";
 const initApiRoute = () => {
     const apiRouter = Router();
-    apiRouter.use('/token/:id', limitPets, tokenGeneretor)
+    apiRouter.use('/token/:id', limitPets, tokenGeneretor);
     apiRouter.use('/get', limitPets, tokenVerify,  getInitRoute());
     apiRouter.use('/post', limitPets, limitSize, tokenVerify, postInitRoute());
     apiRouter.use('/put', limitPets, limitSize, tokenVerify, putInitRouter());

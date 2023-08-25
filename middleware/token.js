@@ -4,17 +4,17 @@ import { collectionGen } from '../db/atlas.js';
 
 export const tokenGeneretor = async (req, res) =>{
     try {
-        const {id} = req.params
-        const id_numero = parseInt(id)
+        const {id} = req.params;
+        const id_numero = parseInt(id);
         const connection = await collectionGen('trainer');
         const trainer = await connection.find(
             {
                 id_trainer: id_numero
             }
-        ).toArray()
+        ).toArray();
         if (!trainer) res.status(404).send("usuario no existente");
         const {_id} = trainer[0];
-        const id_string = _id.toString()
+        const id_string = _id.toString();
         const encoder = new TextEncoder();
         const jwtconstructor = new SignJWT({id: id_string});
         const jwt = await jwtconstructor
@@ -25,7 +25,7 @@ export const tokenGeneretor = async (req, res) =>{
         res.status(201).send({status: 201, message: jwt});
     } catch (error) {
         console.log(error);
-        res.status(404).send({status: 404, message: 'Token solicitado no existente'})
+        res.status(404).send({status: 404, message: 'Token solicitado no existente'});
     }   
 }
 
