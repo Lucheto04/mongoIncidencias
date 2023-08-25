@@ -1,22 +1,17 @@
 import { SignJWT, jwtVerify } from 'jose';
 import { collectionGen } from '../db/atlas.js';
 
+const connection = await collectionGen('trainer');
 
 export const tokenGeneretor = async (req, res) =>{
     try {
-        const {id} = req.params;
-        const id_numero = parseInt(id);
-        const connection = await collectionGen('trainer');
-        const trainer = await connection.find(
-            {
-                id_trainer: id_numero
-            }
-        ).toArray();
-        if (!trainer) res.status(404).send("usuario no existente");
-        const {_id} = trainer[0];
-        const id_string = _id.toString();
+        console.log(Object.keys(req.body));
+        if (Object.keys(req.body).length === 0) return res.status(400).send({mesaage: "Datos no enviados"});
+        const trainer = await connection.findOne(req.body)
+        if (!trainer) return res.status(404).send("usuario no existente");
+        const id = trainer._id.toString();
         const encoder = new TextEncoder();
-        const jwtconstructor = new SignJWT({id: id_string});
+        const jwtconstructor = new SignJWT({id: id});
         const jwt = await jwtconstructor
         .setProtectedHeader({alg:"HS256", typ: "JWT"})
         .setIssuedAt()
