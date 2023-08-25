@@ -17,7 +17,8 @@ db.trainer.insertMany([
         telefono_movil: "+57 321 548 6549",
         rol: "Trainer",
         permisos:{
-            "/incidencias": ["1.0.0", "3.5.0"]
+            "/incidencias": ["1.0.0", "3.5.0", "GET", "POST", "PUT", "DELETE"],
+            "/trainers": ["1.0.0", "3.5.0", "GET"]
         }
     },
     {
@@ -28,7 +29,8 @@ db.trainer.insertMany([
         telefono_movil: "+57 311 485 6945",
         rol: "Trainer",
         permisos:{
-            "/incidencias": ["1.0.0", "3.5.0"]
+            "/incidencias": ["1.0.0", "3.5.0", "GET", "POST", "PUT", "DELETE"],
+            "/trainers": ["1.0.0", "3.5.0", "GET"]
         }
     },
     {
@@ -39,7 +41,8 @@ db.trainer.insertMany([
         telefono_movil: "+57 389 455 4545",
         rol: "Trainer",
         permisos:{
-            "/incidencias": ["1.0.0", "3.5.0"]
+            "/incidencias": ["1.0.0", "3.5.0", "GET", "POST", "PUT", "DELETE"],
+            "/trainers": ["1.0.0", "3.5.0", "GET"]
         }
     },
     {
@@ -50,8 +53,8 @@ db.trainer.insertMany([
         telefono_movil: "+57 365 275 4585",
         rol: "Jefe de trainers",
         permisos:{
-            "/incidencias": ["1.0.0", "3.5.0", "GET", "POST", "PUT", "UPDATE"],
-            "/trainers": ["1.0.0", "3.5.0", "GET", "PUT", "UPDATE"]
+            "/incidencias": ["1.0.0", "3.5.0", "GET", "POST", "PUT", "DELETE"],
+            "/trainers": ["1.0.0", "3.5.0", "GET", "POST", "PUT", "DELETE"]
         },
     }
 ]);
