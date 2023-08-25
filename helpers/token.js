@@ -1,5 +1,8 @@
 import { SignJWT, jwtVerify } from 'jose';
 import { collectionGen } from '../db/atlas.js';
+import { ObjectId } from "mongodb";
+import dotenv from 'dotenv';
+dotenv.config("../");
 
 const connection = await collectionGen('trainer');
 
@@ -16,7 +19,7 @@ export const tokenGeneretor = async (req, res) =>{
         .setProtectedHeader({alg:"HS256", typ: "JWT"})
         .setIssuedAt()
         .setExpirationTime("30m")
-        .sign(encoder.encode(process.env.JWT_PRIVATE_KEY));
+        .sign(encoder.encode(`${process.env.JWT_PRIVATE_KEY}`));
         res.status(201).send({status: 201, message: jwt});
     } catch (error) {
         console.log(error);
@@ -24,18 +27,24 @@ export const tokenGeneretor = async (req, res) =>{
     }   
 }
 
-export const tokenVerify = async (req, res, next) => {
-    const {authorization} = req.headers;
-    if (!authorization) return res.status(400).send({status: 400, token: "Token no enviado"});
+export const tokenVerify = async (req, token) => {
     try {
         const encoder = new TextEncoder();
         const jwtData = await jwtVerify(
-            authorization,
-            encoder.encode(process.env.JWT_PRIVATE_KEY)
+            token,
+            encoder.encode(`${process.env.JWT_PRIVATE_KEY}`)
         );
-        req.data = jwtData;
-        next();
+        console.log(req._parsedUrl.pathname);
+        const res = await connection.findOne(
+            {
+                _id:new ObjectId(jwtData.payload.id),
+                [`permisos.${req._parsedUrl.pathname}`]: `${req.headers["accept-version"]}`
+            }
+        );
+        console.log(res);
+        let {_id, permisos, ...trainer} = res;
+        return trainer;
     } catch (error) {
-        res.status(498).send({status: 498, token: "Token caducado"});
+        return false;
     }
 }

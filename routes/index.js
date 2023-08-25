@@ -4,14 +4,15 @@ import postInitRoute from "./postRoute.js";
 import putInitRouter from "./putRoute.js";
 import deleteInitRoute from "./deleteRouter.js";
 import { limitPets, limitSize } from "../helpers/limit.js";
-import { tokenGeneretor, tokenVerify } from "../helpers/token.js";
+import { tokenGeneretor,} from "../helpers/token.js";
+
 const initApiRoute = () => {
     const apiRouter = Router();
     apiRouter.use('/token', limitPets, tokenGeneretor);
-    apiRouter.use('/get', limitPets, tokenVerify,  getInitRoute());
-    apiRouter.use('/post', limitPets, limitSize, tokenVerify, postInitRoute());
-    apiRouter.use('/put', limitPets, limitSize, tokenVerify, putInitRouter());
-    apiRouter.use('/delete', limitPets, tokenVerify,  deleteInitRoute());
+    apiRouter.use('/get', limitPets,  getInitRoute());
+    apiRouter.use('/post', limitPets, limitSize, postInitRoute());
+    apiRouter.use('/put', limitPets, limitSize, putInitRouter());
+    apiRouter.use('/delete', limitPets,  deleteInitRoute());
     return apiRouter;
 }
 
