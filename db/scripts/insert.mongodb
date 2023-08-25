@@ -50,8 +50,8 @@ db.trainer.insertMany([
         telefono_movil: "+57 365 275 4585",
         rol: "Jefe de trainers",
         permisos:{
-            "/api": ["1.0.0", "3.5.0"]
-        }
+            "/trainers": ["1.0.0", "3.5.0"]
+        },
     }
 ]);
 
