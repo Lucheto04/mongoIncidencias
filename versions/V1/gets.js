@@ -1,7 +1,13 @@
+import { Router } from 'express'; 
 
-export const userV1 = (req, next) => {
+const appVersionAll1 = Router();
+
+appVersionAll1.use(async(req, res, next) => {
     if(!req.rateLimit) return;
-    console.log('ok 1.0.0');
-    console.log(req.user);
-    return next()
+    next()
+})
+
+
+export { 
+    appVersionAll1
 }

@@ -9,10 +9,10 @@ import { tokenGeneretor,} from "../helpers/token.js";
 const initApiRoute = () => {
     const apiRouter = Router();
     apiRouter.use('/token', limitPets, tokenGeneretor);
-    apiRouter.use('/get', limitPets,  getInitRoute());
-    apiRouter.use('/post', limitPets, limitSize, postInitRoute());
-    apiRouter.use('/put', limitPets, limitSize, putInitRouter());
-    apiRouter.use('/delete', limitPets,  deleteInitRoute());
+    apiRouter.use('/', limitPets,  getInitRoute());
+    apiRouter.use('/', limitPets, limitSize, postInitRoute());
+    apiRouter.use('/', limitPets, limitSize, putInitRouter());
+    apiRouter.use('/', limitPets,  deleteInitRoute());
     return apiRouter;
 }
 
