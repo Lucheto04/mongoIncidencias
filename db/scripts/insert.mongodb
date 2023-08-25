@@ -15,7 +15,10 @@ db.trainer.insertMany([
         email_personal: "MiguelCas@gmail.com",
         email_corporativo: "MiguelCampus@outlook.com",
         telefono_movil: "+57 321 548 6549",
-        rol: "Trainer"
+        rol: "Trainer",
+        permisos:{
+            "/api": ["1.0.0", "3.5.0"]
+        }
     },
     {
         id_trainer: Number(siguienteId("trainer")),
@@ -23,7 +26,10 @@ db.trainer.insertMany([
         email_personal: "CarlosRue@gmail.com",
         email_corporativo: "CarlosCampus@outlook.com",
         telefono_movil: "+57 311 485 6945",
-        rol: "Trainer"
+        rol: "Trainer",
+        permisos:{
+            "/api": ["1.0.0", "3.5.0"]
+        }
     },
     {
         id_trainer: Number(siguienteId("trainer")),
@@ -31,7 +37,10 @@ db.trainer.insertMany([
         email_personal: "Vermen@gmail.com",
         email_corporativo: "VermenCampus@outlook.com",
         telefono_movil: "+57 389 455 4545",
-        rol: "Trainer"
+        rol: "Trainer",
+        permisos:{
+            "/api": ["1.0.0", "3.5.0"]
+        }
     },
     {
         id_trainer: Number(siguienteId("trainer")),
@@ -39,7 +48,10 @@ db.trainer.insertMany([
         email_personal: "Johlver@gmail.com",
         email_corporativo: "JohlverCampus@outlook.com",
         telefono_movil: "+57 365 275 4585",
-        rol: "Jefe de trainers"
+        rol: "Jefe de trainers",
+        permisos:{
+            "/api": ["1.0.0", "3.5.0"]
+        }
     }
 ]);
 
