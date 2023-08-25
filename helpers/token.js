@@ -34,17 +34,18 @@ export const tokenVerify = async (req, token) => {
             token,
             encoder.encode(`${process.env.JWT_PRIVATE_KEY}`)
         );
-        console.log(req._parsedUrl.pathname);
-        const res = await connection.findOne(
-            {
-                _id:new ObjectId(jwtData.payload.id),
-                [`permisos.${req._parsedUrl.pathname}`]: `${req.headers["accept-version"]}`
-            }
-        );
-        console.log(res);
-        let {_id, permisos, ...trainer} = res;
+        const result = await connection.findOne({_id:new ObjectId(jwtData.payload.id)});
+        if(!(req._parsedUrl.pathname in result.permisos)) return;
+        let versiones = result.permisos[req._parsedUrl.pathname];
+        if(!(versiones.includes(req.headers["accept-version"]))) return;
+        const allowedMethods = result.permisos[req._parsedUrl.pathname];
+        const currentMethod = req.method;
+        console.log(result);
+        if (!allowedMethods.includes(currentMethod)) return metodoNoPermitido;
+        let {_id, permisos, ...trainer} = result;
         return trainer;
     } catch (error) {
+        console.log(error);
         return false;
     }
 }
