@@ -30,6 +30,19 @@ db.createCollection("trainer", {
                     bsonType: 'string',
                     description: `El parametro rol es obligatorio y debe ser un string.`
                 },
+                permisos: { 
+                    bsonType: 'object',
+                    description: "Ingrese los permisos",
+                    properties: {
+                        "/api": {
+                            bsonType: "array",
+                            items: {
+                                bsonType: "string",
+                                description: "Ingrese la version autorizada",
+                            }
+                        }
+                    }
+                },
                 email_personal: {
                     bsonType: 'string',
                     description: `El parametro email_personal es obligatorio y debe ser un string.`
