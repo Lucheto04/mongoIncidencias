@@ -48,9 +48,11 @@ export class Trainer {
         try {
             const connection = await this.connect();
             const newId = await siguienteId("trainer");
+            const {nombre: nombre, email: email_personal, telefono: telefono_movil, rol: rol} = data
+            let json = Object.assign({nombre, email_personal, telefono_movil, rol});
             const newDocument = {
                 id_trainer: newId,
-                ...data
+                ...json
             };
             const result = connection.insertOne(newDocument);
             return result
