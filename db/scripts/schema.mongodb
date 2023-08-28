@@ -13,7 +13,7 @@ db.createCollection("trainer", {
     validator: {
         $jsonSchema: {
             bsonType: 'object',
-            additionalProperties: false,
+            additionalProperties: true,
             required: ['_id', 'id_trainer','nombre', 'email_personal', 'telefono_movil', 'rol'],
             properties: {
                 _id: {
@@ -83,7 +83,7 @@ db.createCollection("incidencia", {
     validator: {
         $jsonSchema: {
             bsonType: 'object',
-            additionalProperties: false,
+            additionalProperties: true,
             required: ['_id', 'id_incidencia', 'trainerId' , 'categoria', 'tipo_incidencia', 'fecha_reporte', 'area_incidencia', 'equipo_averiado', 'codigo_equipo', 'descripcion'],
             properties: {
                 _id: {
