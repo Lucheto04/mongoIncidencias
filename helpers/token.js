@@ -8,7 +8,6 @@ const connection = await collectionGen('trainer');
 
 export const tokenGeneretor = async (req, res) =>{
     try {
-        console.log(Object.keys(req.body));
         if (Object.keys(req.body).length === 0) return res.status(400).send({mesaage: "Datos no enviados"});
         const trainer = await connection.findOne(req.body)
         if (!trainer) return res.status(404).send("usuario no existente");
@@ -40,7 +39,6 @@ export const tokenVerify = async (req, token) => {
         if(!(versiones.includes(req.headers["accept-version"]))) return;
         const allowedMethods = result.permisos[req._parsedUrl.pathname];
         const currentMethod = req.method;
-        console.log(result);
         if (!allowedMethods.includes(currentMethod)) return metodoNoPermitido;
         let {_id, permisos, ...trainer} = result;
         return trainer;
