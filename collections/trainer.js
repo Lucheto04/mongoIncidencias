@@ -63,9 +63,11 @@ export class Trainer {
     async putTrainer(id, data){
         try {
             const connection = await this.connect();
+            const {nombre: nombre, email: email_personal, telefono: telefono_movil, rol: rol} = data
+            let json = Object.assign({nombre, email_personal, telefono_movil, rol});
             const result = await connection.updateOne(
                 { id_trainer: parseInt(id) },
-                { $set: data }
+                { $set: json }
             );
             return result;
         } catch (error) {
