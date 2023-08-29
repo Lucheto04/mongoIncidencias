@@ -1,7 +1,7 @@
 import { rateLimit } from "express-rate-limit";
 
 const limitSize = (req, res, next) => {
-  const payloadSizeLimit = 200;
+  const payloadSizeLimit = 250;
   const contentLength = req.headers["content-length"];
   if (contentLength > payloadSizeLimit) {
     return res.status(413).json({
