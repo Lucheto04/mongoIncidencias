@@ -6,7 +6,7 @@ let trainer = {
     entidad4: "rol"
 };
 let {entidad1:t1, entidad2: t2, entidad3: t3, entidad4: t4} = trainer;
-export const trainersPostDtoV1 = [
+export const trainersPostDtoV3 = [
     check(`${t1}`)
     .notEmpty().withMessage(`El ${t1} es obligatorio.`)
     .isString().withMessage(`El ${t1} debe ser un string.`)
@@ -35,7 +35,7 @@ let incidencia = {
     entidad7: "descripcion_incidencia",
 };
 let {entidad1:i1, entidad2: i2, entidad3: i3, entidad4: i4, entidad5: i5, entidad6: i6, entidad7: i7} = incidencia;
-export const incidenciasPostDtoV1 = [
+export const incidenciasPostDtoV3 = [
     check(`${i1}`)
     .notEmpty().withMessage(`El ${i1} es obligatorio.`)
     .isNumeric().withMessage(`El ${i1} debe ser el numero del id de un trainer.`),
