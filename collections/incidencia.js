@@ -50,10 +50,12 @@ export class Incidencia {
         try {
             const connection = await this.connect();
             const newIdProducto = await siguienteId("incidencia");
+            const {trainer: trainerId, categoria_incidencia: categoria, tipo: tipo_incidencia, area: area_incidencia, equipo: equipo_averiado, codigo: codigo_equipo, descripcion_incidencia: descripcion} = data
+            let json = Object.assign({trainerId, categoria, tipo_incidencia, area_incidencia, equipo_averiado, codigo_equipo, descripcion});
             const newDocumentProducto = {
                 id_incidencia: newIdProducto,
                 fecha_reporte: fecha, 
-                ...data
+                ...json
             };
             const result = connection.insertOne(newDocumentProducto);
             return result
@@ -64,9 +66,11 @@ export class Incidencia {
     async putIncidencia(id, data) {
         try {
             const connection = await this.connect();
+            const {trainer: trainerId, categoria_incidencia: categoria, tipo: tipo_incidencia, area: area_incidencia, equipo: equipo_averiado, codigo: codigo_equipo, descripcion_incidencia: descripcion} = data
+            let json = Object.assign({trainerId, categoria, tipo_incidencia, area_incidencia, equipo_averiado, codigo_equipo, descripcion});
             const result = await connection.updateOne(
                 { id_incidencia: parseInt(id) },
-                { $set: data }
+                { $set: json }
             );
             return result;
         } catch (error) {
